@@ -506,7 +506,8 @@ public class XbeLoader extends AbstractLibrarySupportLoader {
 	{
 		try {
 			// Read in section data and blank difference
-			byte[] data = input.readByteArray(off, (int)vlen);
+			byte[] data = new byte[(int)vlen];
+			System.arraycopy(input.readByteArray(off, (int)len), 0, data, 0, (int)len);
 			for (int i = (int)len; i < (int)vlen; i++) {
 				data[i] = 0;
 			}
